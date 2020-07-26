@@ -10,6 +10,11 @@
             "StackName": "amplify-eli5-dev-130945",
             "StackId": "arn:aws:cloudformation:us-east-2:480683211494:stack/amplify-eli5-dev-130945/95522a00-cf73-11ea-86ed-064e0383f37e",
             "AmplifyAppId": "d2bam4t10w3gz4"
+        },
+        "categories": {
+            "auth": {
+                "eli5b17b6477": {}
+            }
         }
     }
 }
