@@ -41,6 +41,9 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
+    "@aws-amplify/cli": "^4.25.0",
+    "@aws-amplify/ui-react": "^0.2.12",
+    "aws-amplify": "^3.0.21",
     "axios": "^0.19.2",
     "jquery": "^3.5.1",
     "lodash.debounce": "^4.0.8",
