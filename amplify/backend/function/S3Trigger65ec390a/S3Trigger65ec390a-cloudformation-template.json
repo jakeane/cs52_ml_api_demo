@@ -4,6 +4,14 @@
 	"Parameters": {
 		"env": {
 			"Type": "String"
+		},
+		"apieli5GraphQLAPIIdOutput": {
+			"Type": "String",
+			"Default": "apieli5GraphQLAPIIdOutput"
+		},
+		"apieli5GraphQLAPIEndpointOutput": {
+			"Type": "String",
+			"Default": "apieli5GraphQLAPIEndpointOutput"
 		}
 	},
 	"Conditions": {
@@ -47,6 +55,15 @@
 					"Variables": {
 						"ENV": {
 							"Ref": "env"
+						},
+						"REGION": {
+							"Ref": "AWS::Region"
+						},
+						"API_ELI5_GRAPHQLAPIIDOUTPUT": {
+							"Ref": "apieli5GraphQLAPIIdOutput"
+						},
+						"API_ELI5_GRAPHQLAPIENDPOINTOUTPUT": {
+							"Ref": "apieli5GraphQLAPIEndpointOutput"
 						}
 					}
 				},
@@ -60,8 +77,9 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-eli5-dev-130945-deployment",
-					"S3Key": "amplify-builds/S3Trigger65ec390a-764c68454745686a6376-build.zip"
-				}
+					"S3Key": "amplify-builds/S3Trigger65ec390a-744e58574f31376a2b33-build.zip"
+				},
+				"Layers": []
 			}
 		},
 		"LambdaExecutionRole": {
@@ -141,6 +159,85 @@
 									}
 								]
 							}
+						}
+					]
+				}
+			}
+		},
+		"RekognitionPolicy": {
+			"DependsOn": [
+				"LambdaExecutionRole"
+			],
+			"Type": "AWS::IAM::Policy",
+			"Properties": {
+				"PolicyName": "rekognition-detect-labels",
+				"Roles": [
+					{
+						"Ref": "LambdaExecutionRole"
+					}
+				],
+				"PolicyDocument": {
+					"Version": "2012-10-17",
+					"Statement": [
+						{
+							"Effect": "Allow",
+							"Action": [
+								"rekognition:detectLabels"
+							],
+							"Resource": "*"
+						}
+					]
+				}
+			}
+		},
+		"AmplifyResourcesPolicy": {
+			"DependsOn": [
+				"LambdaExecutionRole"
+			],
+			"Type": "AWS::IAM::Policy",
+			"Properties": {
+				"PolicyName": "amplify-lambda-execution-policy-api-api-api",
+				"Roles": [
+					{
+						"Ref": "LambdaExecutionRole"
+					}
+				],
+				"PolicyDocument": {
+					"Version": "2012-10-17",
+					"Statement": [
+						{
+							"Effect": "Allow",
+							"Action": [
+								"appsync:Create*",
+								"appsync:StartSchemaCreation",
+								"appsync:GraphQL",
+								"appsync:Get*",
+								"appsync:List*",
+								"appsync:Update*",
+								"appsync:Delete*"
+							],
+							"Resource": [
+								{
+									"Fn::Join": [
+										"",
+										[
+											"arn:aws:appsync:",
+											{
+												"Ref": "AWS::Region"
+											},
+											":",
+											{
+												"Ref": "AWS::AccountId"
+											},
+											":apis/",
+											{
+												"Ref": "apieli5GraphQLAPIIdOutput"
+											},
+											"/*"
+										]
+									]
+								}
+							]
 						}
 					]
 				}

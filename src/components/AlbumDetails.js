@@ -60,7 +60,7 @@ const S3ImageUpload = (props) => {
   );
 };
 
-const PhotosList = React.memo((props) => {
+export const PhotosList = React.memo((props) => {
   const PhotoItems = (prps) => {
     return prps.photos.map((photo) => (
       <S3Image

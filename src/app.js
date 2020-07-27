@@ -6,7 +6,9 @@ import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 import NewAlbum from './components/NewAlbum';
 import AlbumsList from './components/AlbumsList';
 import AlbumDetails from './components/AlbumDetails';
+import Search from './components/Search';
 
+// https://ffwjah4igbfunebhk4xtbsoi5a.appsync-api.us-east-2.amazonaws.com/graphql
 // https://ffwjah4igbfunebhk4xtbsoi5a.appsync-api.us-east-2.amazonaws.com/graphql
 
 const App = () => {
@@ -16,6 +18,7 @@ const App = () => {
         <Grid.Column>
           <Route path="/" exact component={NewAlbum} />
           <Route path="/" exact component={AlbumsList} />
+          <Route path="/" exact component={Search} />
           <Route
             path="/albums/:albumId"
             render={() => (
