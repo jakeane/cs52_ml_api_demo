@@ -43,6 +43,7 @@
   "dependencies": {
     "@aws-amplify/api": "^3.1.20",
     "@aws-amplify/cli": "^4.25.0",
+    "@aws-amplify/storage": "^3.2.10",
     "@aws-amplify/ui-react": "^0.2.12",
     "aws-amplify": "^3.0.21",
     "aws-amplify-react": "^4.1.20",
@@ -53,6 +54,8 @@
     "react-dom": "^16.13.1",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
-    "semantic-ui-react": "^1.0.0"
+    "regenerator-runtime": "^0.13.7",
+    "semantic-ui-react": "^1.0.0",
+    "uuid": "^8.2.0"
   }
 }
