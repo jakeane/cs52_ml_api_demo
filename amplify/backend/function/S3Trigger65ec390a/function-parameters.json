@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "api": {
+      "eli5": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    }
+  },
+  "lambdaLayers": []
+}
