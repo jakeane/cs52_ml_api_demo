@@ -9,7 +9,8 @@ type Album
 type Photo
   @model
   @key(name: "byAlbum", fields: ["albumId"], queryField: "listPhotosByAlbum")
-  @auth(rules: [{ allow: owner }, { allow: private, provider: iam }]) {
+  @auth(rules: [{ allow: owner }, { allow: private, provider: iam }])
+  @searchable {
   id: ID!
   albumId: ID!
   album: Album @connection(fields: ["albumId"])
