@@ -160,3 +160,47 @@ export const listPhotosByAlbum = /* GraphQL */ `
     }
   }
 `;
+export const searchPhotos = /* GraphQL */ `
+  query SearchPhotos(
+    $filter: SearchablePhotoFilterInput
+    $sort: SearchablePhotoSortInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    searchPhotos(
+      filter: $filter
+      sort: $sort
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        albumId
+        bucket
+        fullsize {
+          key
+          width
+          height
+        }
+        thumbnail {
+          key
+          width
+          height
+        }
+        labels
+        createdAt
+        updatedAt
+        album {
+          id
+          name
+          createdAt
+          updatedAt
+          owner
+        }
+        owner
+      }
+      nextToken
+      total
+    }
+  }
+`;
