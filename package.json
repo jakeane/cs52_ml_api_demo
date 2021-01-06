@@ -49,7 +49,7 @@
     "aws-amplify-react": "^4.1.20",
     "aws-appsync": "^4.0.0",
     "aws-sdk": "^2.720.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "buffer": "^5.6.0",
     "es6-promise": "^4.2.8",
     "graphql-tag": "^2.10.4",
